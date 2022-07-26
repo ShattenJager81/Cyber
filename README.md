@@ -154,16 +154,16 @@ The playbook implements the following tasks:
 The following screenshot displays the result of running `docker ps -a` after successfully configuring the ELK instance.
 
 **Jump-Box**
-![Jump-Box](./Pictures/Jump-Box.png)
+![Jump-Box](./Jump-Box.png)
 
 **Web-1**
-![Web-1](./Pictures/Web-1.png)
+![Web-1](./Web-1.png)
 
 **Web-2**
-![Web-2](./Pictures/Web-2.png)
+![Web-2](./Web-2.png)
 
 **ELK-box**
-![ELK-box](./Pictures/ELK-box.png)
+![ELK-box](./ELK-box.png)
 
 
 
@@ -177,14 +177,14 @@ We have installed the following Beats on these machines:
 
 * Filebeat allows the collection of log files from very specific file collection softwares like Apache, Microsoft Azure tools and webservers.
 
- + [Filebeat Module Status Screenshot](./Cyber/Pictures/Filebeat-status.png)
+ + [Filebeat Module Status Screenshot](./Filebeat-status.png)
 
 * Metricbeat will be used to monitor VM stats, CPU core stats, filesystem stats, memory stats, and network stats.
 
- + [Metricbeat Module Status Screenshot](./Cyber/Pictures/Metricbeat-status.png)
-	+ [Metricbeat Dashboard](./Cyber/Pictures/Metricdash.png)
-	+ [Metricbeat CPU Statistics](./Cyber/Pictures/Metriccpu.png)
-	+ [Metricbeat Memory Statistics](./Cyber/Pictures/Metricmemory.png)
+ + [Metricbeat Module Status Screenshot](./Metricbeat-status.png)
+	+ [Metricbeat Dashboard](./Metricdash.png)
+	+ [Metricbeat CPU Statistics](./Metriccpu.png)
+	+ [Metricbeat Memory Statistics](./Metricmemory.png)
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
