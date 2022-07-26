@@ -1,0 +1,36 @@
+1 ---
+  2   - name: Config Webserver with Docker
+  3     hosts: webservers
+  4     become: true
+  5     tasks:
+  6 
+  7     - name: Install Docker.io
+  8       apt:
+  9         name: docker.io
+ 10         state: present
+ 11 
+ 12     - name: Install pip3
+ 13       apt:
+ 14         force_apt_get: yes
+ 15         name: python3-pip
+ 16         state: present
+ 17 
+ 18     - name: Install Docker Python Module
+ 19       pip:
+ 20         name: docker
+ 21         state: present
+ 22 
+ 23     - name: Download and launch DWVA container
+ 24       docker_container:
+ 25         name: dvwa
+ 26         image: cyberxsecurity/dvwa
+ 27         state: started
+ 28         restart_policy: always
+ 29         published_ports: 80:80
+ 30 
+ 31     - name: Enable my docker services
+ 32       systemd:
+ 33         name: docker
+ 34         enabled: yes
+ 35          
+ 36      #playbook.yml (filename)

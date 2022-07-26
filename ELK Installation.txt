@@ -1,0 +1,48 @@
+  1 ---
+  2   - name: Install & Configure ELK with Docker
+  3     hosts: elk
+  4     remote_user: sysadmin
+  5     become: true
+  6     tasks:
+  7 
+  8     - name: Utilize More Memory
+  9       sysctl:
+ 10         name: vm.max_map_count
+ 11         value: 262144
+ 12         state: present
+ 13         reload: yes
+ 14 
+ 15     - name: Install Docker.io
+ 16       apt:
+ 17         update_cache: yes
+ 18         name: docker.io
+ 19         state: present
+ 20 
+ 21     - name: Install pip3
+ 22       apt:
+ 23         force_apt_get: yes
+ 24         name: python3-pip
+ 25         state: present
+ 26 
+ 27     - name: Install Docker Python Module
+ 28       pip:
+ 29         name: docker
+ 30         state: present
+ 31 
+ 32     - name: Download and launch ELK container
+ 33       docker_container:
+ 34         name: ELK
+ 35         image: sebp/elk:761
+ 36         state: started
+ 37         restart_policy: always
+ 38         published_ports:
+ 39           - 5601:5601
+ 40           - 9200:9200
+ 41           - 5044:5044
+ 42 
+ 43     - name: Enable my docker services
+ 44       systemd:
+ 45         name: docker
+ 46         enabled: yes
+ 47	
+ 48     #betterelk.yml (filename)
